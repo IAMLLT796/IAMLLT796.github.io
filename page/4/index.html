@@ -416,7 +416,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
       <img src="/2023/04/15/RPC%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/image-20230415230617445.png" class title="image-20230415230617445">
 
 <img src="/2023/04/15/RPC%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/image-20230415230628940.png" class title="image-20230415230628940">
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/04/15/git%E9%83%A8%E7%BD%B2/">git部署</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-04-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-05-15</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/04/15/git%E9%83%A8%E7%BD%B2/">git部署</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-04-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-04-10</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="git部署到远端操作步骤">
           <a href="#git部署到远端操作步骤" class="heading-link"><i class="fas fa-link"></i></a><a href="#git部署到远端操作步骤" class="headerlink" title="git部署到远端操作步骤"></a>git部署到远端操作步骤</h1>
       
@@ -470,6 +470,179 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 
 <p>另外：下述命令是将本地分支名改成main</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m main</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h1 id="git-工程区域">
+          <a href="#git-工程区域" class="heading-link"><i class="fas fa-link"></i></a><a href="#git-工程区域" class="headerlink" title="git 工程区域"></a>git 工程区域</h1>
+      
+        <h2 id="1-版本库-Repository">
+          <a href="#1-版本库-Repository" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-版本库-Repository" class="headerlink" title="1.版本库(Repository)"></a>1.版本库(Repository)</h2>
+      <p>在工作区种有一个隐藏目录 .git，这个文件夹就是 Git 的版本库，里面存放了 Git 用来管理该工程的<strong>所有版本数据</strong>，也可以叫本地仓库。</p>
+
+        <h2 id="2-工作区-Working-Directory">
+          <a href="#2-工作区-Working-Directory" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-工作区-Working-Directory" class="headerlink" title="2.工作区(Working Directory)"></a>2.工作区(Working Directory)</h2>
+      <p>日常工作的代码文件或者文档所在的文件夹。</p>
+
+        <h2 id="3-暂存区-stage">
+          <a href="#3-暂存区-stage" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-暂存区-stage" class="headerlink" title="3.暂存区(stage)"></a>3.暂存区(stage)</h2>
+      <p>一般存放在工程根目录 .git&#x2F;index 文件夹中，所以暂存区也叫做索引（index）。</p>
+
+        <h2 id="Git-版本控制下的文件状态">
+          <a href="#Git-版本控制下的文件状态" class="heading-link"><i class="fas fa-link"></i></a><a href="#Git-版本控制下的文件状态" class="headerlink" title="Git 版本控制下的文件状态"></a>Git 版本控制下的文件状态</h2>
+      
+        <h3 id="1-已提交（committed）">
+          <a href="#1-已提交（committed）" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-已提交（committed）" class="headerlink" title="1.已提交（committed）"></a>1.已提交（committed）</h3>
+      <p>该文件已经被安全地保存在本地数据库中了。</p>
+
+        <h3 id="2-已修改（modified">
+          <a href="#2-已修改（modified" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-已修改（modified" class="headerlink" title="2.已修改（modified)"></a>2.已修改（modified)</h3>
+      <p>修改了某个文件，但还没有提交保存</p>
+
+        <h3 id="3-已暂存（staged）">
+          <a href="#3-已暂存（staged）" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-已暂存（staged）" class="headerlink" title="3.已暂存（staged）"></a>3.已暂存（staged）</h3>
+      <p>把已经修改的文件放在下次提交时要保存的清单中。</p>
+
+        <h1 id="git-常用命令">
+          <a href="#git-常用命令" class="heading-link"><i class="fas fa-link"></i></a><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h1>
+      
+        <h2 id="工程准备">
+          <a href="#工程准备" class="heading-link"><i class="fas fa-link"></i></a><a href="#工程准备" class="headerlink" title="工程准备"></a>工程准备</h2>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 用于在本地目录下新建 git 项目仓库</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line">// 用于克隆远端工程到本地磁盘</span><br><span class="line">git clone [URL]</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="新增-x2F-删除-x2F-移动文件到缓存区">
+          <a href="#新增-x2F-删除-x2F-移动文件到缓存区" class="heading-link"><i class="fas fa-link"></i></a><a href="#新增-x2F-删除-x2F-移动文件到缓存区" class="headerlink" title="新增&#x2F;删除&#x2F;移动文件到缓存区"></a>新增&#x2F;删除&#x2F;移动文件到缓存区</h2>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 在提交修改的文件之前，需要 git add 把文件添加到暂存区</span><br><span class="line">git add file</span><br><span class="line"></span><br><span class="line">// 将指定文件彻底从当前分支的缓存区删除，因此它从当前分支的下一个提交快照中被删除</span><br><span class="line">git rm file</span><br><span class="line"></span><br><span class="line">// git mv 命令用于移动文件，也可以用于重命名文件</span><br><span class="line">git mv file toDirectory</span><br><span class="line">git mv directory/file directory/newFile</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="查看工作区">
+          <a href="#查看工作区" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看工作区" class="headerlink" title="查看工作区"></a>查看工作区</h2>
+      <p><code>git diff</code> 用于比较项目中任意两个版本（分支）的差异，也可以用来比较当前的索引和上次提交的差异。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 比较两个节点之间的差异</span><br><span class="line">git diff node1 node2</span><br><span class="line"></span><br><span class="line">// 比较两个分支之间的差异</span><br><span class="line">git diff master..lin/develop/framework</span><br><span class="line"></span><br><span class="line">// 当前的索引和上次提交间的差异</span><br><span class="line">git diff --cached</span><br><span class="line"></span><br><span class="line">// 在 diff 后面加 --name-status 参数，只看文件列表</span><br><span class="line">git diff master..lin/develop/framework --name-status</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><code>git status</code> 用于显示工作目录和暂存区的状态，可以看到修改的 git 文件是否已经被保存，新增的文件是否纳入了 git 版本库的管理。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="提交更改的文件">
+          <a href="#提交更改的文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#提交更改的文件" class="headerlink" title="提交更改的文件"></a>提交更改的文件</h2>
+      <p><code>git commit</code> 主要将暂存区里的文件改动提交到本地的版本库。</p>
+<blockquote>
+<p>提交这个动作是本地动作，是往本地的版本库中记录改动，不影响远端服务器</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git commit file -m &quot;commit message&quot;</span><br><span class="line"></span><br><span class="line">// 一次性提交所有在暂存区改动的文件到版本库</span><br><span class="line">git commit -am &quot;commit message&quot;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="查看日志">
+          <a href="#查看日志" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2>
+      <p><code>git log</code> 用于查看提交历史。</p>
+<p>默认加其他参数的话，<code>git log</code> 会按提交时间由近到远列出所有的历史提交日志。</p>
+<p>每个日志基本包含提交节点、作者信息、提交时间、提交说明等。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line"></span><br><span class="line">// 搭配不同参数</span><br><span class="line">git log --name-status/-p/--pretty/--graph</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="推送至远端仓库">
+          <a href="#推送至远端仓库" class="heading-link"><i class="fas fa-link"></i></a><a href="#推送至远端仓库" class="headerlink" title="推送至远端仓库"></a>推送至远端仓库</h2>
+      <p>在使用 <code>git commit</code> 将自己修改的从暂存区提交到本地版本库后，可以使用  <code>git push</code>  将本地版本库的分支推送到远程服务器上对应的分支。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git push origin branch_name</span><br><span class="line"></span><br><span class="line">// 你的本地分支名可以与推送到远端的分支名不同</span><br><span class="line">// windows 分支名大小写不敏感</span><br><span class="line">git push origin branch_name:new_branch_name</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="分支管理">
+          <a href="#分支管理" class="heading-link"><i class="fas fa-link"></i></a><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2>
+      <p><code>git branch</code> 查看本地工程的所有 git 分支名称。</p>
+
+        <h3 id="查看分支">
+          <a href="#查看分支" class="heading-link"><i class="fas fa-link"></i></a><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 查看本地所有 git 分支，分支前面带 * 表示当前工作区所在的分支</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line">// 查看远端服务器上分支，返回的分支带有 origin 前缀，表示在远端</span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line">// 查看远端服务器和本地工程所有的分支</span><br><span class="line">git branch -a</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="新建分支">
+          <a href="#新建分支" class="heading-link"><i class="fas fa-link"></i></a><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3>
+      <p><code>git branch</code> 和 <code>git checkout -b</code> 的异同：</p>
+<p><strong>相同点：</strong> 都是用来新建分支，默认基于当前分支节点创建。</p>
+<p><strong>区别点：</strong> <code>git branch</code> 新建分支后并不会切换到新分支；<code>git checkout -b</code> 新建分支后会自动切换到新分支。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch new_branch_name</span><br><span class="line">git checkout -b branch_name</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="删除分支">
+          <a href="#删除分支" class="heading-link"><i class="fas fa-link"></i></a><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3>
+      <p><code>git branch -d</code> 和 <code>git branch -D</code> 都可以用来删除本地分支，后者大写表示强制删除。</p>
+<blockquote>
+<p>有时候当事分支包含了未合并的改动，或者当事分支是当前所在分支，则 -d 无法删除，需要使用强制删除来达到目的</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git branch -d branch_name</span><br><span class="line"></span><br><span class="line">git branch -D branch_name</span><br><span class="line"></span><br><span class="line">// 删除服务器上的远程分支</span><br><span class="line">git branch -d -r branch_name</span><br><span class="line"></span><br><span class="line">// 删除后，还要推送到服务器</span><br><span class="line">git push origin : branch_name</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="切换分支-检出">
+          <a href="#切换分支-检出" class="heading-link"><i class="fas fa-link"></i></a><a href="#切换分支-检出" class="headerlink" title="切换分支-检出"></a>切换分支-检出</h3>
+      <p><code>git checkout</code> 除了创建分支，还用来切换分支</p>
+<blockquote>
+<p>如果当前分支工作区存在修改而为提交的文件，与目的分支上的内容冲突，会导致 checkout 切换失败，这时候，使用 git checkout -f 进行强制切换</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// git checkout 对象可以是分支，也可以是某个提交点或者节点下的某个文件</span><br><span class="line">git checkout branch_name</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="合并远端分支更新与本地分支内容">
+          <a href="#合并远端分支更新与本地分支内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#合并远端分支更新与本地分支内容" class="headerlink" title="合并远端分支更新与本地分支内容"></a>合并远端分支更新与本地分支内容</h3>
+      <p><code>git pull</code> 从远端服务器中获取某个分支的更新，再与本地指定的分支进行自动合并。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull origin remote_branch:local_branch</span><br><span class="line"></span><br><span class="line">// 如果远程指定的分支与本地指定的分支相同</span><br><span class="line">git pull origin remote_branch</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="获取远端分支更新到本地仓库">
+          <a href="#获取远端分支更新到本地仓库" class="heading-link"><i class="fas fa-link"></i></a><a href="#获取远端分支更新到本地仓库" class="headerlink" title="获取远端分支更新到本地仓库"></a>获取远端分支更新到本地仓库</h3>
+      <p><code>git fetch</code> 从远端服务器中获取某个分支的更新到本地仓库。</p>
+<blockquote>
+<p>与 <code>git pull</code> 不同，<code>git fetch</code> 在获取到更新后，并不会进行合并（即下页中的 git merge）操作，这样能留给用户一个操作空间，确认 git fetch 内容符合预期后，再决定是否手动合并节点。</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin remote_branch:local_branch</span><br><span class="line"></span><br><span class="line">// 如果远程指定的分支与本地指定的分支相同</span><br><span class="line">git fetch origin remote_branch</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="分支合并">
+          <a href="#分支合并" class="heading-link"><i class="fas fa-link"></i></a><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h2>
+      <p><code>git merge</code> 和 <code>git rebase</code> 的差异在后续展开！</p>
+<p><code>git merge</code> 用于从指定的分支（节点）合并到当前分支的操作。</p>
+<blockquote>
+<p><code>git</code> 会将指定的分支与当前分支进行比较，找出二者最近的一个共同节点 base，之后将指定分支在 base 之后分离的节点合并到当前分支上。</p>
+<p>分支合并，实际上是分支间差异提交节点的合并。</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branch_name</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><code>git rebase</code> 用于合并目标分支内容到当前分支。</p>
+<blockquote>
+<p><code>git rebase</code> 用于分支合并， <code>git merge</code> 也是用于分支合并。</p>
+<p>如果要将其他分支的提交节点合并到当前分支，<code>git merge</code> 和 <code>git rebase</code> 都可以达成目的。</p>
+</blockquote>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase branch_name</span><br></pre></td></tr></table></div></figure>
 
 </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/04/06/%E8%A7%A3%E5%86%B3hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/">解决hexo图片不显示问题</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-04-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-04-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="解决hexo图片不显示问题">
