@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/3.jpg?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/4.jpg?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="测试开发                           1. 单元测试                           单元测试概念       单元测试（Unit Testing, UT），又称模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序，函数，过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试开发">
+<meta property="og:url" content="https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="葵海">
+<meta property="og:description" content="测试开发                           1. 单元测试                           单元测试概念       单元测试（Unit Testing, UT），又称模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序，函数，过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/image-20240512151836294.png">
+<meta property="og:image" content="https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/image-20240512154227306.png">
+<meta property="article:published_time" content="2024-05-12T05:56:02.000Z">
+<meta property="article:modified_time" content="2024-05-13T01:52:51.811Z">
+<meta property="article:author" content="LLT796">
+<meta property="article:tag" content="测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/image-20240512151836294.png"><title>测试开发 | 葵海</title><link ref="canonical" href="https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":true},
+  reward: false,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">博主</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/read/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/timeline/"><span class="header-nav-menu-item__icon"><i class="fas fa-history"></i></span><span class="header-nav-menu-item__text">menu.timeline</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">葵海</div><div class="header-banner-info__subtitle">欢迎来到我的博客空间</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">测试开发</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2024-05-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2024-05-13</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h1 id="测试开发">
+          <a href="#测试开发" class="heading-link"><i class="fas fa-link"></i></a><a href="#测试开发" class="headerlink" title="测试开发"></a>测试开发</h1>
+      
+        <h2 id="1-单元测试">
+          <a href="#1-单元测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-单元测试" class="headerlink" title="1. 单元测试"></a>1. 单元测试</h2>
+      
+        <h3 id="单元测试概念">
+          <a href="#单元测试概念" class="heading-link"><i class="fas fa-link"></i></a><a href="#单元测试概念" class="headerlink" title="单元测试概念"></a>单元测试概念</h3>
+      <p>单元测试（Unit Testing, UT），又称模块测试，是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序，函数，过程等。</p>
+<p>对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。</p>
+
+        <h3 id="由谁来完成">
+          <a href="#由谁来完成" class="heading-link"><i class="fas fa-link"></i></a><a href="#由谁来完成" class="headerlink" title="由谁来完成"></a>由谁来完成</h3>
+      <p>单元测试可以懒作是编码工作的一部分，是由程序员来完成，最终受益的也是程序员自己。程序员有责任编写功能代码，同时也就有责任为自己的代码编写单元测试。执行单元测试，就是为了证明这段代码的行为和我们期望的一致。</p>
+
+        <h3 id="什么时候做">
+          <a href="#什么时候做" class="heading-link"><i class="fas fa-link"></i></a><a href="#什么时候做" class="headerlink" title="什么时候做"></a>什么时候做</h3>
+      <p>单元测试能帮助开发人员更高效的发现问题，保证代码健壮性，单元测试在集成测试之前做，并且每次修改代码后也需要跑单元测试，保证代码对其他逻辑无影响。</p>
+
+        <h2 id="2-单元测试实现">
+          <a href="#2-单元测试实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-单元测试实现" class="headerlink" title="2. 单元测试实现"></a>2. 单元测试实现</h2>
+      
+        <h3 id="实现">
+          <a href="#实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#实现" class="headerlink" title="实现"></a>实现</h3>
+      <p>业务代码</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Calculate</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>测试代码（通过快捷键 ctrl + shift + T 创建）</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalculateTest</span> &#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testCalculateAdd</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Calculate</span> <span class="variable">calculate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Calculate</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> calculate.add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        Assert.assertEquals(result, <span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTestAdd run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>运行结果</p>
+<img src="/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/image-20240512151836294.png" class title="image-20240512151836294">
+
+
+
+
+        <h3 id="断言">
+          <a href="#断言" class="heading-link"><i class="fas fa-link"></i></a><a href="#断言" class="headerlink" title="断言"></a>断言</h3>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>assertArrayEquals</td>
+<td>比较两个数组是否相等，数组相同位置的对象equals比较都为true</td>
+</tr>
+<tr>
+<td>assertEquals</td>
+<td>比较两个对象是否相等，与equals方法类似</td>
+</tr>
+<tr>
+<td>assertNotEquals</td>
+<td>查看两个对象是否不相等</td>
+</tr>
+<tr>
+<td>assertNull</td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td>assertNotNull</td>
+<td>判断是否不为空</td>
+</tr>
+<tr>
+<td>assertSame</td>
+<td>判断对象引用是否相等，类似使用”&#x3D;&#x3D;”比较两个对象</td>
+</tr>
+<tr>
+<td>assertNotSame</td>
+<td>判断对象引用是否不相等，类似使用”!&#x3D;”比较两个对象</td>
+</tr>
+<tr>
+<td>assertTrue</td>
+<td>查看运行结果是否为True</td>
+</tr>
+<tr>
+<td>assertFalse</td>
+<td>查看运行结果是否为False</td>
+</tr>
+<tr>
+<td>fail</td>
+<td>测试用例直接失败</td>
+</tr>
+</tbody></table></div>
+
+        <h3 id="junit注解">
+          <a href="#junit注解" class="heading-link"><i class="fas fa-link"></i></a><a href="#junit注解" class="headerlink" title="junit注解"></a>junit注解</h3>
+      <ul>
+<li><strong>@Test：</strong> 说明依附在 JUnit 的 public void 方法可以作为一个测试案例。</li>
+<li><strong>@Before：</strong> 有些测试在运行前需要创造几个相似的对象。在 public void 方法加该注释是因为该方法需要在test方法前运行。</li>
+<li><strong>@After：</strong> 如果你将外部资源在 Before 方法中分配，那么你需要在测试运行后释放他们。在 public void 方法中加该注释是因为该方法需要在 test 方法后执行。</li>
+<li><strong>@BeforeClass：</strong> 在 public void 方法加该注释是因为该方法需要在类中所有方法前运行。</li>
+<li><strong>@AfterClass：</strong> 它将会使方法在所有测试结束后执行。这个可以用来进行清理。</li>
+<li><strong>@Ignore：</strong> 这个注释是用来忽略有关不需要指定的测试的。</li>
+</ul>
+<p>测试代码</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalculateTest</span> &#123;</span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">beforeClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTest beforeClass run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">afterClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTest afterClass run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTest before run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">after</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTest after run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testCalculateAdd</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Calculate</span> <span class="variable">calculate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Calculate</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> calculate.add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        Assert.assertEquals(result, <span class="number">3</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTestAdd run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Ignore</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testCalculateAdd2</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Calculate</span> <span class="variable">calculate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Calculate</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> calculate.add(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        Assert.assertEquals(result, <span class="number">4</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;CalculateTestAdd run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p>测试结果</p>
+<img src="/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/image-20240512154227306.png" class title="image-20240512154227306">
+
+
+
+
+        <h3 id="异常测试">
+          <a href="#异常测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#异常测试" class="headerlink" title="异常测试"></a>异常测试</h3>
+      <p>**使用@Test excepted	**</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Test(expected = IllegalArgumentException.class)</span><br><span class="line">public void should_exception_when_divide_given_input_illegal() &#123;</span><br><span class="line">    Calculate calculate = new Calculate();</span><br><span class="line">    calculate.divide(3, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>使用Try&#x2F;Catch</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void should_exception_when_divide_given_input_illegal3() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        Calculate calculate = new Calculate();</span><br><span class="line">        calculate.divide(3, 0);</span><br><span class="line">    &#125; catch(IllegalArgumentException e) &#123;</span><br><span class="line">        Assert.assertThat(e.getMessage(), Is.is(&quot;divisor cannot be 0&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>使用ExpectedException Rule</strong></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Rule</span><br><span class="line">public ExpectedException expectedException = ExpectedException.none();</span><br><span class="line">@Test</span><br><span class="line">public void should_exception_when_divide_given_input_illegal2() &#123;</span><br><span class="line">    Calculate calculate = new Calculate();</span><br><span class="line">    expectedException.expect(IllegalArgumentException.class);</span><br><span class="line">    expectedException.expectMessage(&quot;divisor cannot be 0&quot;);</span><br><span class="line">    calculate.divide(3, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="参数化测试">
+          <a href="#参数化测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#参数化测试" class="headerlink" title="参数化测试"></a>参数化测试</h3>
+      <blockquote>
+<p>允许开发人员使用不同的值反复运行相同的测试。</p>
+</blockquote>
+<p>创建参数化测试需要注意如下几点：</p>
+<ul>
+<li>使用 @RunWith（Parameterized.class）注释测试类</li>
+<li>创建一个使用 @Parameters 注释的公共静态方法，该方法返回一个对象集合作为测试数据集</li>
+<li>创建一个构造函数或使用 @Parameter 注解来接收”测试数据“的内容</li>
+</ul>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">    1.注解测试类</span><br><span class="line">    2.构造测试数集</span><br><span class="line">    3.接受测试数据</span><br><span class="line">     */</span><br><span class="line">@RunWith(Parameterized.class)</span><br><span class="line">public class CalculateTest &#123;</span><br><span class="line">    @BeforeClass</span><br><span class="line">    public static void beforeClass() &#123;</span><br><span class="line">        System.out.println(&quot;CalculateTest beforeClass run&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void before() &#123; System.out.println(&quot;CalculateTest before run&quot;); &#125;</span><br><span class="line"></span><br><span class="line">    @AfterClass</span><br><span class="line">    public static void afterClass() &#123;</span><br><span class="line">        System.out.println(&quot;CalculateTest afterClass run&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @After</span><br><span class="line">    public void after() &#123; System.out.println(&quot;CalculateTest after run&quot;); &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    int except;     // 用来存储预期结果</span><br><span class="line">    int input1;     // 用来存储第一个输入参数</span><br><span class="line">    int input2;     // 用来存储第二个输入参数</span><br><span class="line"></span><br><span class="line">    @Parameterized.Parameters</span><br><span class="line">    public static Collection&lt;Object[]&gt; initTestData() &#123;</span><br><span class="line">        return Arrays.asList(new Object[][] &#123;</span><br><span class="line">                &#123;3, 1, 2&#125;, &#123;10, 5, 5&#125;, &#123;6, 4, 2&#125;, &#123;7, 3, 4&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 接受数据</span><br><span class="line">    public CalculateTest(int except, int input1, int input2) &#123;</span><br><span class="line">        this.except = except;</span><br><span class="line">        this.input1 = input1;</span><br><span class="line">        this.input2 = input2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void should_return_3_when_add_given_parameters() &#123;</span><br><span class="line">        Calculate calculate = new Calculate();</span><br><span class="line">        int actual = calculate.add(input1, input2);</span><br><span class="line">        Assert.assertEquals(actual, except);</span><br><span class="line">        System.out.println(MessageFormat.format(&quot;except:&#123;0&#125;, input1:&#123;1&#125;, input2:&#123;2&#125;&quot;, except, input1, input2));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="测试套件Suite：批量运行测试类">
+          <a href="#测试套件Suite：批量运行测试类" class="heading-link"><i class="fas fa-link"></i></a><a href="#测试套件Suite：批量运行测试类" class="headerlink" title="测试套件Suite：批量运行测试类"></a>测试套件Suite：批量运行测试类</h3>
+      <p>在实际项目中，随着项目进度的开展，单元测试类会越来越多，可是直到现在我们还只会一个一个的单独运行测试类，这在项目实践中肯定是不可行的。为了解决这个问题，JUnit 提供了一种批量运行测试类的方法，叫做测试套件。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(Suite.class)</span></span><br><span class="line"><span class="meta">@Suite</span>.SuiteClasses(&#123;CalculateTest.class, CalculateTest1.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FeatureTest</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h3 id="MOCK">
+          <a href="#MOCK" class="heading-link"><i class="fas fa-link"></i></a><a href="#MOCK" class="headerlink" title="MOCK"></a>MOCK</h3>
+      <p>对于某些不容易构造（如HttpServletRequest必须在Servlet容器中才能构造出来）或者不容易获取比较复杂的对象（如JDBC中的ResultSet对象），用一个虚拟的对象（Mock对象）来创建，以便测试方便。就是消除外部依赖。</p>
+<ul>
+<li>解决不同单元之间由于耦合而难于测试的问题</li>
+<li>通过模拟依赖以分解单元测试耦合的部分</li>
+<li>验证所调用的依赖的行为</li>
+</ul>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(JMockit.class)</span><br><span class="line">public class FileExportTest &#123;</span><br><span class="line">    @Test</span><br><span class="line">    public void should_return_true_when_export_file() &#123;</span><br><span class="line">        MockUp&lt;FileReader&gt; fileReaderMockUp = new MockUp&lt;FileReader&gt;() &#123;</span><br><span class="line">            @Mock</span><br><span class="line">            public String readFileFromServer() &#123;</span><br><span class="line">                return &quot;test&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        FileExport fileExport = new FileExport();</span><br><span class="line"></span><br><span class="line">        Assert.assertTrue(fileExport.export());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><strong>Mock对象适用的场景</strong></p>
+<ul>
+<li>真实对象很难被创建</li>
+<li>真实对象某些行为很难触发</li>
+<li>真实情况令程序的运行速度变慢</li>
+<li>真实对象有用户界面</li>
+<li>测试时需要了解真实对象如何被调用</li>
+<li>真实对象实际上不存在</li>
+</ul>
+
+        <h2 id="3-测试原则">
+          <a href="#3-测试原则" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-测试原则" class="headerlink" title="3. 测试原则"></a>3. 测试原则</h2>
+      
+        <h3 id="FIRST原则">
+          <a href="#FIRST原则" class="heading-link"><i class="fas fa-link"></i></a><a href="#FIRST原则" class="headerlink" title="FIRST原则"></a>FIRST原则</h3>
+      <ul>
+<li><strong>Fast（快速）：</strong> 测试的运行速度将决定自动化的反馈速度，速度越快，越能提早发现问题，省去不必要浪费的时间，提高工作效率。<strong>反例：一个测试用例需要跑1分钟；在测试用例里面sleep</strong></li>
+<li><strong>Isolated（独立）：</strong> 每一个测试用例需要保证完全独立运行，互不依赖，这样才能保证测试运行不被干扰，从而能够并行运行甚至分布式运行，使得测试运行更加Fast。<strong>反例：一个测试用例调用了另一个测试用例；依赖了另一个测试用例的数据。</strong></li>
+<li><strong>Repeatable（可重复）：</strong> 每一个测试用例在运行条件不变的情况下，不论重复运行多少次，运行结果必须完全一致。<strong>反例：在没有任何代码变更的情况下，一个测试用例跑了999次都通过了，但第1000次出错了与实践相关，昨天跑是OK的，今天跑就挂了。</strong></li>
+<li><strong>Self-Validating（自验证）：</strong> 测试用例必须能够自动告知（断言）运行结果，而不依赖人工进行判断结果是正确还是错误。<strong>反例：测试只能打印运行日志，需要依赖人工判断运行是否符合预期。</strong></li>
+<li><strong>Timely（及时）：</strong> 编写自动化测试是一种好的习惯，为了保证能够及时得到反馈，必须及时编写自动化测试而不拖延，一旦拖延，就很难补回来。<strong>反例：现在太忙，后面找个时间集中补测试。</strong></li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://iamllt796.github.io">LLT796</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/">https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://iamllt796.github.io/tags/%E6%B5%8B%E8%AF%95/">测试</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2024/05/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><span class="paginator-prev__text">正则表达式</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text">
+          测试开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1. 单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          单元测试概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1%E8%B0%81%E6%9D%A5%E5%AE%8C%E6%88%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">
+          由谁来完成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%81%9A"><span class="toc-number">1.1.3.</span> <span class="toc-text">
+          什么时候做</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2. 单元测试实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%AD%E8%A8%80"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#junit%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          junit注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          异常测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.5.</span> <span class="toc-text">
+          参数化测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6Suite%EF%BC%9A%E6%89%B9%E9%87%8F%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E7%B1%BB"><span class="toc-number">1.2.6.</span> <span class="toc-text">
+          测试套件Suite：批量运行测试类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MOCK"><span class="toc-number">1.2.7.</span> <span class="toc-text">
+          MOCK</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B5%8B%E8%AF%95%E5%8E%9F%E5%88%99"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3. 测试原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FIRST%E5%8E%9F%E5%88%99"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          FIRST原则</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/2.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">今天要比昨天进步一点点</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/IAMLLT796" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="lt.liu796@gmail.com" target="_blank" rel="noopener" data-popover="Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/274733853?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-popover="bilibili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Bili</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/kui-hua-cheng-hai-xiang-yang-er-kai-76" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">51</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">58</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>冀ICP备19023374</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 大力支持</span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>葵海-做一个有趣的人</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-banner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'https://iamllt796.github.io/2024/05/12/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
