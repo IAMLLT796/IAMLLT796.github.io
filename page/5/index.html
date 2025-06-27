@@ -28,7 +28,158 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">博主</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/read/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/timeline/"><span class="header-nav-menu-item__icon"><i class="fas fa-history"></i></span><span class="header-nav-menu-item__text">menu.timeline</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">葵海</div><div class="header-banner-info__subtitle">欢迎来到我的博客空间</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/04/15/RPC%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">RPC项目总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-04-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-04-15</span></span></div></header><div class="post-body"><div class="post-excerpt">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">博主</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/read/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/timeline/"><span class="header-nav-menu-item__icon"><i class="fas fa-history"></i></span><span class="header-nav-menu-item__text">menu.timeline</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">葵海</div><div class="header-banner-info__subtitle">欢迎来到我的博客空间</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/04/17/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-04-17</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-04-17</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="位运算知识点总结">
+          <a href="#位运算知识点总结" class="heading-link"><i class="fas fa-link"></i></a><a href="#位运算知识点总结" class="headerlink" title="位运算知识点总结"></a>位运算知识点总结</h1>
+      
+        <h2 id="主要的位运算概览">
+          <a href="#主要的位运算概览" class="heading-link"><i class="fas fa-link"></i></a><a href="#主要的位运算概览" class="headerlink" title="主要的位运算概览"></a>主要的位运算概览</h2>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">描述</th>
+<th align="center">运算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&amp;</td>
+<td align="center">与</td>
+<td align="center">两个位都为1时，结果才为1</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">或</td>
+<td align="center">两个位都为0时，结果才为0</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">异或</td>
+<td align="center">两个位相同为0，相异为1</td>
+</tr>
+</tbody></table></div>
+
+        <h2 id="按位与运算符号-amp">
+          <a href="#按位与运算符号-amp" class="heading-link"><i class="fas fa-link"></i></a><a href="#按位与运算符号-amp" class="headerlink" title="按位与运算符号 (&amp;)"></a>按位与运算符号 (&amp;)</h2>
+      
+        <h3 id="定义">
+          <a href="#定义" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义" class="headerlink" title="定义"></a>定义</h3>
+      <p>参加运算的两个数据，按照二进制位运算进行与运算</p>
+
+        <h3 id="运算规则">
+          <a href="#运算规则" class="heading-link"><i class="fas fa-link"></i></a><a href="#运算规则" class="headerlink" title="运算规则"></a>运算规则</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&amp;0=0	0&amp;1=0	1&amp;0=0	1&amp;1=1</span><br></pre></td></tr></table></div></figure>
+
+<p>即两位同时为1，结果才为1，否则结果为0</p>
+
+        <h3 id="例子">
+          <a href="#例子" class="heading-link"><i class="fas fa-link"></i></a><a href="#例子" class="headerlink" title="例子"></a>例子</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3&amp;5=0000 0011&amp;0000 0101=0000 0001=1</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="与运算用途">
+          <a href="#与运算用途" class="heading-link"><i class="fas fa-link"></i></a><a href="#与运算用途" class="headerlink" title="与运算用途"></a>与运算用途</h3>
+      
+        <h4 id="清零">
+          <a href="#清零" class="heading-link"><i class="fas fa-link"></i></a><a href="#清零" class="headerlink" title="清零"></a>清零</h4>
+      <p>如果想将一个数清零，即将其二进制位全为0，只要与一个各位都为0的数值相与，结果就为0。</p>
+
+        <h4 id="取一个数的指定位">
+          <a href="#取一个数的指定位" class="heading-link"><i class="fas fa-link"></i></a><a href="#取一个数的指定位" class="headerlink" title="取一个数的指定位"></a>取一个数的指定位</h4>
+      <p>比如要取数X&#x3D;10101110的低四位，只需要找一个数Y，令Y的低四位为1，其余位为0，即Y&#x3D;0000 1111。然后将X与Y进行与运算就可以得到X的低四位了。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X&amp;Y=1010 1110&amp;0000 1111=0000 1010</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="判断奇偶">
+          <a href="#判断奇偶" class="heading-link"><i class="fas fa-link"></i></a><a href="#判断奇偶" class="headerlink" title="判断奇偶"></a>判断奇偶</h4>
+      <p>只要根据最末尾是0还是1来决定，为0就为偶数，为1就是奇数。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if((a&amp;1)==0)==if(a%2==0)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="按位或运算符（-）">
+          <a href="#按位或运算符（-）" class="heading-link"><i class="fas fa-link"></i></a><a href="#按位或运算符（-）" class="headerlink" title="按位或运算符（|）"></a>按位或运算符（|）</h2>
+      
+        <h3 id="定义-1">
+          <a href="#定义-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3>
+      <p>参加运算的两个对象，按照二进制进行或运算</p>
+
+        <h3 id="运算规则-1">
+          <a href="#运算规则-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#运算规则-1" class="headerlink" title="运算规则"></a>运算规则</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0|0=0	0|1=1	1|0=1	1|1=1</span><br></pre></td></tr></table></div></figure>
+
+<p>即参加运算的两个对象只要有一个为1，其结果就为1.</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3|5=0000 0011|0000 0101=0000 0111=7</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="或运算用途">
+          <a href="#或运算用途" class="heading-link"><i class="fas fa-link"></i></a><a href="#或运算用途" class="headerlink" title="或运算用途"></a>或运算用途</h3>
+      
+        <h4 id="对一个数据的某些位设置为1">
+          <a href="#对一个数据的某些位设置为1" class="heading-link"><i class="fas fa-link"></i></a><a href="#对一个数据的某些位设置为1" class="headerlink" title="对一个数据的某些位设置为1"></a>对一个数据的某些位设置为1</h4>
+      <p>比如将X&#x3D;1010 1110的低四位设置为1，只需要另一个数Y&#x3D;0000 1111。然后就可以将X与Y进行按位或运算。</p>
+
+        <h2 id="异或运算符（-）">
+          <a href="#异或运算符（-）" class="heading-link"><i class="fas fa-link"></i></a><a href="#异或运算符（-）" class="headerlink" title="异或运算符（^）"></a>异或运算符（^）</h2>
+      
+        <h3 id="定义-2">
+          <a href="#定义-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3>
+      <p>参与运算的两个数据，按二进制位进行异或运算</p>
+
+        <h3 id="运算规则-2">
+          <a href="#运算规则-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#运算规则-2" class="headerlink" title="运算规则"></a>运算规则</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0^0=0	0^1=1	1^0=1	1^1=0</span><br></pre></td></tr></table></div></figure>
+
+<p>即参加运算的两个对象，如果两个相应位相同为0，相异为1</p>
+
+        <h3 id="异或的性质">
+          <a href="#异或的性质" class="heading-link"><i class="fas fa-link"></i></a><a href="#异或的性质" class="headerlink" title="异或的性质"></a>异或的性质</h3>
+      <blockquote>
+<ol>
+<li>交换律</li>
+<li>结合律：(a^b)^c&#x3D;a^(b^c)</li>
+<li><strong>对于任何数x，都有x^0&#x3D;x，x^x&#x3D;0</strong></li>
+<li><strong>自反性：a^b^b&#x3D;a^0&#x3D;a</strong></li>
+</ol>
+</blockquote>
+
+        <h3 id="异或运算用途">
+          <a href="#异或运算用途" class="heading-link"><i class="fas fa-link"></i></a><a href="#异或运算用途" class="headerlink" title="异或运算用途"></a>异或运算用途</h3>
+      
+        <h4 id="翻转指定位">
+          <a href="#翻转指定位" class="heading-link"><i class="fas fa-link"></i></a><a href="#翻转指定位" class="headerlink" title="翻转指定位"></a>翻转指定位</h4>
+      <p>比如将数X&#x3D;1010 1110的低四位进行翻转，只需要令Y的低四位为1，其余位为0，即Y&#x3D;0000 1111。</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X^Y=1010 1110^0000 1111=1010 0001</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="与0相异或值不变">
+          <a href="#与0相异或值不变" class="heading-link"><i class="fas fa-link"></i></a><a href="#与0相异或值不变" class="headerlink" title="与0相异或值不变"></a>与0相异或值不变</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1010 1110^0000 0000=1010 1110</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="交换两个数">
+          <a href="#交换两个数" class="heading-link"><i class="fas fa-link"></i></a><a href="#交换两个数" class="headerlink" title="交换两个数"></a>交换两个数</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void swap(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">	if(a!=b)</span><br><span class="line">	&#123;</span><br><span class="line">		a^=b;</span><br><span class="line">		b^=a;</span><br><span class="line">		a^=b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="leetcode实际题目">
+          <a href="#leetcode实际题目" class="heading-link"><i class="fas fa-link"></i></a><a href="#leetcode实际题目" class="headerlink" title="leetcode实际题目"></a>leetcode实际题目</h2>
+      <p>链接：<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-number/">https://leetcode.cn/problems/single-number/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="讲解">
+          <a href="#讲解" class="heading-link"><i class="fas fa-link"></i></a><a href="#讲解" class="headerlink" title="讲解"></a>讲解</h3>
+      <p>比如数组[2,2,1]</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2^2^1=0^1=1</span><br></pre></td></tr></table></div></figure>
+
+<p>数组[4,1,2,1,2]</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4^1^2^1^2=4^1^1^2^2=4^0^0=4</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="题解">
+          <a href="#题解" class="heading-link"><i class="fas fa-link"></i></a><a href="#题解" class="headerlink" title="题解"></a>题解</h3>
+      <p>一定要在常数空间复杂度时间内求解，不需要运用HashMap来进行求解</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">singleNumber</span><span class="params">(<span class="type">int</span>[] nums)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> n:nums)</span><br><span class="line">        &#123;</span><br><span class="line">            res^=n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/04/15/RPC%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">RPC项目总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-04-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-04-15</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="基于Java语言开发的RPC">
           <a href="#基于Java语言开发的RPC" class="heading-link"><i class="fas fa-link"></i></a><a href="#基于Java语言开发的RPC" class="headerlink" title="基于Java语言开发的RPC"></a>基于Java语言开发的RPC</h1>
       
@@ -1058,68 +1209,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
           <a href="#代码实现-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3>
       <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></div></figure>
 
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/02/27/01%E8%83%8C%E5%8C%85%E6%80%BB%E7%BB%93/">01背包知识点总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-02-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-02-27</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="0-1背包">
-          <a href="#0-1背包" class="heading-link"><i class="fas fa-link"></i></a><a href="#0-1背包" class="headerlink" title="0-1背包"></a>0-1背包</h1>
-      <p>问题：有一个最大容量为bagSize的背包，要使这个背包装下最大价值的物品，且每个物品只能装一次。这些物品具有重量weight和价值value两个属性。</p>
-
-        <h2 id="动态规划解题步骤">
-          <a href="#动态规划解题步骤" class="heading-link"><i class="fas fa-link"></i></a><a href="#动态规划解题步骤" class="headerlink" title="动态规划解题步骤"></a>动态规划解题步骤</h2>
-      <p>定义一个二维数组dp存储最大价值。</p>
-<p>则dp[i][j]表示前i件物品体积不超过j的情况下能达到的最大价值。有两种情况可以讨论：</p>
-<blockquote>
-<ol>
-<li>第i件物品没有被添加到背包，总体积不超过j的前i件物品的最大价值就是总体积不超过j的前i-1件物品的最大价值，dp[i][j]&#x3D;dp[i-1][j].</li>
-<li>第i件物品添加到背包中, dp[i][j]&#x3D;dp[i-1][j-weight[i]]+value[i].</li>
-</ol>
-</blockquote>
-<p> 第i件物品可以添加也可以不添加，取决于哪种情况下谁的价值最大。dp方程如下：<br>$$<br>dp[i][j]&#x3D;max(dp[i-1][j],dp[i-1][j-weight[i]]+value[i])<br>$$<br>weight&#x3D;[1,3,4]</p>
-<p>value&#x3D;[15,20,30]</p>
-<div class="table-container"><table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">0</th>
-<th align="center">1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="center">4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">物品一</td>
-<td align="center">0</td>
-<td align="center">15</td>
-<td align="center">15</td>
-<td align="center">15</td>
-<td align="center">15</td>
-</tr>
-<tr>
-<td align="center">物品二</td>
-<td align="center">0</td>
-<td align="center">15</td>
-<td align="center">15</td>
-<td align="center">20</td>
-<td align="center">35</td>
-</tr>
-<tr>
-<td align="center">物品三</td>
-<td align="center">0</td>
-<td align="center">15</td>
-<td align="center">15</td>
-<td align="center">20</td>
-<td align="center">35</td>
-</tr>
-</tbody></table></div>
-<p>代码如下：</p>
-<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testWeightBagProblem</span><span class="params">(<span class="type">int</span> bagSize,<span class="type">int</span>[] weight,<span class="type">int</span>[] value)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> goods=weight.length;<span class="comment">//获取物品的数量</span></span><br><span class="line">    <span class="type">int</span>[][] dp=<span class="keyword">new</span> <span class="title class_">int</span>[goods+<span class="number">1</span>][bagSize+<span class="number">1</span>];<span class="comment">//构造dp数组</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=weight[<span class="number">0</span>];i&lt;=bagSize;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[<span class="number">0</span>][i]=value[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//遍历，先遍历背包，再遍历背包</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;weight.length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=bagSize;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;weight[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dp[i][j]=dp[i-<span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                dp[i][j]=Math.max(dp[i-<span class="number">1</span>][j],dp[i-<span class="number">1</span>][j-weight[i]]+value[i])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//打印dp数组</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
-
-
-
-<blockquote>
-<p>本题中需要注意的点是在遍历顺序上，先遍历背包再遍历物品和先遍历物品再遍历背包都是可以的</p>
-</blockquote>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/2.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">今天要比昨天进步一点点</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/IAMLLT796" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="lt.liu796@gmail.com" target="_blank" rel="noopener" data-popover="Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/274733853?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-popover="bilibili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Bili</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/kui-hua-cheng-hai-xiang-yang-er-kai-76" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">51</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">58</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>冀ICP备19023374</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 大力支持</span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>葵海-做一个有趣的人</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/2.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">今天要比昨天进步一点点</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/IAMLLT796" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="lt.liu796@gmail.com" target="_blank" rel="noopener" data-popover="Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/274733853?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-popover="bilibili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Bili</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/kui-hua-cheng-hai-xiang-yang-er-kai-76" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">52</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">59</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>冀ICP备19023374</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 大力支持</span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>葵海-做一个有趣的人</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
   var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-banner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
   // 加载进度条的计时器
   var loadingTimer = null;
