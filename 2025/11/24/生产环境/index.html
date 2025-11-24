@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/3.jpg?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/4.jpg?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="CPU 100% 问题怎么排查       如果你线上遇到CPU占用100%的情况，你会怎么一步步排查，说一下你的分析思路。   是否有条理地从系统到进程再到线程定位 理解CPU高的可能原因   如果线上CPU占用100%，有可能是算得太多，也有可能是卡得太久，对比，我会按照系统 -&gt; 进程 -&gt; 线程 -&gt; 代码这四步进行排查。 第一步，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生产环境">
+<meta property="og:url" content="https://iamllt796.github.io/2025/11/24/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="葵海">
+<meta property="og:description" content="CPU 100% 问题怎么排查       如果你线上遇到CPU占用100%的情况，你会怎么一步步排查，说一下你的分析思路。   是否有条理地从系统到进程再到线程定位 理解CPU高的可能原因   如果线上CPU占用100%，有可能是算得太多，也有可能是卡得太久，对比，我会按照系统 -&gt; 进程 -&gt; 线程 -&gt; 代码这四步进行排查。 第一步，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-24T15:18:57.000Z">
+<meta property="article:modified_time" content="2025-11-24T16:01:50.918Z">
+<meta property="article:author" content="LLT796">
+<meta property="article:tag" content="生产环境">
+<meta name="twitter:card" content="summary"><title>生产环境 | 葵海</title><link ref="canonical" href="https://iamllt796.github.io/2025/11/24/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":true},
+  reward: false,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">博主</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/read/"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">阅读</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/timeline/"><span class="header-nav-menu-item__icon"><i class="fas fa-history"></i></span><span class="header-nav-menu-item__text">menu.timeline</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">葵海</div><div class="header-banner-info__subtitle">欢迎来到我的博客空间</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">生产环境</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-11-24</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2025-11-25</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h1 id="CPU-100-问题怎么排查">
+          <a href="#CPU-100-问题怎么排查" class="heading-link"><i class="fas fa-link"></i></a><a href="#CPU-100-问题怎么排查" class="headerlink" title="CPU 100% 问题怎么排查"></a>CPU 100% 问题怎么排查</h1>
+      <p><strong>如果你线上遇到CPU占用100%的情况，你会怎么一步步排查，说一下你的分析思路。</strong></p>
+<blockquote>
+<ol>
+<li>是否有条理地从系统到进程再到线程定位</li>
+<li>理解CPU高的可能原因</li>
+</ol>
+</blockquote>
+<p>如果线上CPU占用100%，有可能是算得太多，也有可能是卡得太久，对比，我会按照系统 -&gt; 进程 -&gt; 线程 -&gt; 代码这四步进行排查。</p>
+<p><strong>第一步，系统层面</strong></p>
+<p>需要先使用<code>top</code> 或<code>htop</code> 查看整体CPU占用，确认是单核打满还是多核整体飙升；其次如果是整体高，可能是负载激增，如果是单核高，多半是逻辑问题。</p>
+<p>对于微服务系统，首先看监控&#x2F;告警：</p>
+<ul>
+<li>是单台机器100%，还是某个pod&#x2F;容器100%;</li>
+<li>查看CPU各项：user&#x2F;system&#x2F;iowait&#x2F;steal占比不一样，方向也不一样<ul>
+<li>us高：大概率是业务代码算得多&#x2F;死循环&#x2F;复杂SQL；</li>
+<li>sy高：系统调用频繁（比如大量IO、锁、上下文切换）</li>
+<li>wa高：CPU不是瓶颈，是IO卡住了；</li>
+<li>steak高：虚拟化环境里被邻居抢了CPU。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl top node</span><br><span class="line">kubectl top pod -n &lt;namespace&gt;  <span class="comment"># 定位到哪个pod/容器的CPU拉满</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><strong>第二步，定位具体进程</strong></p>
+<p>通过第一步，已经知道是某个节点上问题最大。</p>
+<p><strong>登录机器，查看整体情况：</strong></p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">top -c		<span class="comment"># 实时查看每个进程的CPU, 用&#x27;P&#x27;按CPU排序</span></span><br><span class="line"><span class="built_in">uptime</span>		<span class="comment"># 看 load average</span></span><br><span class="line">mpstat -P ALL 1	<span class="comment"># 看每个核的占用情况</span></span><br></pre></td></tr></table></div></figure>
+
+<p>需要关注的有：</p>
+<ul>
+<li>是所有核打满，还是某几个核；</li>
+<li>Load average很高但是 CPU iowait也高，可能是IO问题不是CPU算力问题；</li>
+<li>top里能直接看到哪个进程%CPU排第一；</li>
+</ul>
+<p>或者用<code>ps</code>：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -eo pid,ppid,user,%cpu,%mem,cmd --<span class="built_in">sort</span>=%cpu | <span class="built_in">head</span></span><br></pre></td></tr></table></div></figure>
+
+<p>进而确定：<strong>PID + 可执行命令，确定是哪个服务。</strong> 在 K8s可以反查这个PID属于哪个容器（kubectl exec进Pod后用Top）</p>
+<p><strong>第三步，线程级分析</strong></p>
+<p>CPU 100%不是进程整体每一行代码一起跑，而是 <strong>某几个线程</strong> 在疯狂干活。</p>
+<p>通过命令：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -H -p &lt;pid&gt; 	<span class="comment"># 查看该进程中各线程 CPU 占用</span></span><br></pre></td></tr></table></div></figure>
+
+<p>将占用最高的线程ID转成十六进制，如果是Go，就用 <code>go tool pprof</code> 查调用栈。进而明确 <strong>是那段代码在吞CPU。</strong></p>
+<p><strong>第四步，代码层面</strong></p>
+<p>结合业务指标，判断问题，常见业务指标有：</p>
+<ul>
+<li>QPS &#x2F; 请求数</li>
+<li>RT &#x2F; 响应时间</li>
+<li>错误率 (5xx，超时)</li>
+<li>GC次数 &#x2F; 耗时</li>
+<li>下游依赖（DB&#x2F;Redis&#x2F;外部接口）的QPS&amp;RT</li>
+</ul>
+<p>常见场景：</p>
+<ul>
+<li>QPS高+RT变慢+CPU高<ul>
+<li>典型容量&#x2F;性能问题（流量变多、代码&#x2F;O(N2)&#x2F;SQL慢</li>
+</ul>
+</li>
+<li>QPS正常甚至偏低+RT正常+CPU高<ul>
+<li>死循环、自旋锁、空轮询，或者是某些后台业务疯掉</li>
+</ul>
+</li>
+<li>错误率飙升+CPU高<ul>
+<li>可能是某种异常疯狂重试，降级逻辑写挂了等</li>
+</ul>
+</li>
+<li>system CPU高+context switch多<ul>
+<li>线程数太多、频繁加锁&#x2F;解锁、频繁syscalls</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="深挖">
+          <a href="#深挖" class="heading-link"><i class="fas fa-link"></i></a><a href="#深挖" class="headerlink" title="深挖"></a>深挖</h2>
+      <p><strong>场景A：业务量确实变大 -&gt; 性能&#x2F;容量问题</strong></p>
+<p><strong>场景B：业务平稳但CPU飙高 -&gt; 疑似死循环&#x2F;自锁&#x2F;bug</strong></p>
+<p><strong>场景C：system CPU很高 -&gt; 系统调用&#x2F;内核开销大</strong></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://iamllt796.github.io">LLT796</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://iamllt796.github.io/2025/11/24/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/">https://iamllt796.github.io/2025/11/24/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://iamllt796.github.io/tags/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/">生产环境</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2025/11/17/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%9C%BA%E6%99%AF/"><span class="paginator-prev__text">云原生场景</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU-100-%E9%97%AE%E9%A2%98%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5"><span class="toc-number">1.</span> <span class="toc-text">
+          CPU 100% 问题怎么排查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">
+          深挖</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/2.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">今天要比昨天进步一点点</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/IAMLLT796" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="lt.liu796@gmail.com" target="_blank" rel="noopener" data-popover="Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/274733853?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-popover="bilibili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Bili</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/kui-hua-cheng-hai-xiang-yang-er-kai-76" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">60</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">66</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>冀ICP备19023374</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 大力支持</span><span> v6.3.0</span><span class="footer__devider">|</span><span>Tema - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitantes</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Vistas</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>葵海-做一个有趣的人</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-banner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (false) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'https://iamllt796.github.io/2025/11/24/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
