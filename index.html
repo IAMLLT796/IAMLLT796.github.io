@@ -367,7 +367,313 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <li>天然的结构正则化</li>
 <li>更多可解释性</li>
 </ul>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/">神经网络理论</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2025-12-06</span></span></div></header><div class="post-body"><div class="post-excerpt"></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2025/12/06/%E5%9F%BA%E6%9C%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/">基本机器学习理论</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2025-12-06</span></span></div></header><div class="post-body"><div class="post-excerpt"></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2025/12/06/pytorch%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">pytorch的基本操作</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2025-12-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/">神经网络理论</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2026-01-04</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h2 id="1-在深度神经网络中，为什么会出现梯度消失和梯度爆炸">
+          <a href="#1-在深度神经网络中，为什么会出现梯度消失和梯度爆炸" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-在深度神经网络中，为什么会出现梯度消失和梯度爆炸" class="headerlink" title="1. 在深度神经网络中，为什么会出现梯度消失和梯度爆炸"></a><strong>1. 在深度神经网络中，为什么会出现梯度消失和梯度爆炸</strong></h2>
+      <blockquote>
+<p>梯度消失和梯度爆炸的根本原因是反向传播中梯度的连乘效应。<br>通过<strong>合适的激活函数、权重初始化、归一化方法、残差结构和梯度裁剪</strong>，可以有效缓解甚至解决这些问题。</p>
+</blockquote>
+<p>神经网络训练依赖反向传播（Backpropagation），梯度通过<strong>链式法则</strong>从输出层逐层向前传播：</p>
+<img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260103112735378.png" class title="image-20260103112735378">
+
+<ul>
+<li>如果每一层的梯度 <strong>&lt; 1</strong> → 多次相乘 → <strong>指数级变小</strong> → 梯度消失</li>
+<li>如果每一层的梯度 <strong>&gt; 1</strong> → 多次相乘 → <strong>指数级变大</strong> → 梯度爆炸</li>
+</ul>
+<p>网络越深，这个问题越严重。</p>
+
+        <h3 id="常见原因">
+          <a href="#常见原因" class="heading-link"><i class="fas fa-link"></i></a><a href="#常见原因" class="headerlink" title="常见原因"></a><strong>常见原因</strong></h3>
+      <p><strong>激活函数的影响</strong></p>
+
+        <h4 id="（1）Sigmoid-x2F-Tanh">
+          <a href="#（1）Sigmoid-x2F-Tanh" class="heading-link"><i class="fas fa-link"></i></a><a href="#（1）Sigmoid-x2F-Tanh" class="headerlink" title="（1）Sigmoid &#x2F; Tanh"></a>（1）Sigmoid &#x2F; Tanh</h4>
+      <ul>
+<li>导数最大值 &lt; 1</li>
+<li>在饱和区（输入很大或很小）导数 ≈ 0</li>
+<li>深层网络中极易导致 <strong>梯度消失</strong></li>
+</ul>
+
+        <h4 id="（2）ReLU">
+          <a href="#（2）ReLU" class="heading-link"><i class="fas fa-link"></i></a><a href="#（2）ReLU" class="headerlink" title="（2）ReLU"></a>（2）ReLU</h4>
+      <ul>
+<li>正区间导数 &#x3D; 1（缓解梯度消失）</li>
+<li>负区间导数 &#x3D; 0（可能导致“神经元死亡”）</li>
+</ul>
+<p><strong>权重初始化不当</strong></p>
+<ul>
+<li>权重过小 → 梯度逐层缩小 → 梯度消失</li>
+<li>权重过大 → 梯度逐层放大 → 梯度爆炸</li>
+</ul>
+<p><strong>特殊结构中的问题（如RNN）</strong></p>
+<ul>
+<li>RNN 在时间维度上反复使用同一权重矩阵</li>
+<li>本质也是<strong>深层网络的连乘问题</strong></li>
+<li>梯度消失 &#x2F; 爆炸在 RNN 中尤为严重</li>
+</ul>
+
+        <h3 id="针对梯度消失的解决办法">
+          <a href="#针对梯度消失的解决办法" class="heading-link"><i class="fas fa-link"></i></a><a href="#针对梯度消失的解决办法" class="headerlink" title="针对梯度消失的解决办法"></a>针对梯度消失的解决办法</h3>
+      <ul>
+<li>合理选择激活函数<ul>
+<li>使用 ReLU &#x2F; Leaky ReLU &#x2F; ELU &#x2F; GELU</li>
+<li>避免在深层网络中使用 Sigmoid</li>
+</ul>
+</li>
+<li>合理的权重初始化：保证前向传播和反向传播中，方差不会迅速缩小或放大<ul>
+<li>Xavier 初始化 (适合 Tanh &#x2F; Sigmoid)</li>
+<li>He 初始化（适合 ReLU）</li>
+</ul>
+</li>
+<li>使用 Batch Normalization<ul>
+<li>规范化每一层输入分布</li>
+<li>让激活值不易进入饱和区</li>
+<li>使梯度更稳定</li>
+</ul>
+</li>
+<li>残差连接<ul>
+<li>梯度可以走捷径</li>
+<li>极大缓解深层网络的梯度消失问题</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="针对梯度爆炸的解决办法">
+          <a href="#针对梯度爆炸的解决办法" class="heading-link"><i class="fas fa-link"></i></a><a href="#针对梯度爆炸的解决办法" class="headerlink" title="针对梯度爆炸的解决办法"></a>针对梯度爆炸的解决办法</h3>
+      <ul>
+<li>梯度裁剪：常用于 RNN &#x2F; LSTM<ul>
+<li>防止梯度突然变得极大</li>
+<li>不影响梯度方向，只限制大小</li>
+</ul>
+</li>
+<li>合理设置学习率<ul>
+<li>学习率过大，梯度更新剧烈，容易导致梯度爆炸</li>
+<li>可以用学习率衰减、自适应优化器（Adam）</li>
+</ul>
+</li>
+<li>合理设置权重初始化<ul>
+<li>权重过大是梯度爆炸的直接原因之一</li>
+<li>Xavier &#x2F; He 初始化同样有助于防止爆炸</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="2-BatchNorm，如果输入为-b-c-h-w-，那么可训练参数是多少">
+          <a href="#2-BatchNorm，如果输入为-b-c-h-w-，那么可训练参数是多少" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-BatchNorm，如果输入为-b-c-h-w-，那么可训练参数是多少" class="headerlink" title="2. BatchNorm，如果输入为(b, c, h, w)，那么可训练参数是多少"></a><strong>2. BatchNorm，如果输入为(b, c, h, w)，那么可训练参数是多少</strong></h2>
+      <blockquote>
+<p>对于输入为 (b,c,h,w)(b, c, h, w)(b,c,h,w) 的 BatchNorm2d，可训练参数只有每个通道的缩放 γ 和偏置 β，因此一共是 <strong>2c 个</strong>。</p>
+</blockquote>
+<p>假设输入张量形状为：<br>$$<br>(b,c,h,w)<br>$$<br><strong>b</strong>：batch size</p>
+<p><strong>c</strong>：通道数（channels）</p>
+<p><strong>h, w</strong>：空间维度</p>
+<img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260103114617781.png" class title="image-20260103114617781">
+
+<p><strong>可训练参数是 2c</strong></p>
+
+        <h2 id="3-BatchNorm-和-LayerNorm-的区别，分别的适用场景">
+          <a href="#3-BatchNorm-和-LayerNorm-的区别，分别的适用场景" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-BatchNorm-和-LayerNorm-的区别，分别的适用场景" class="headerlink" title="3. BatchNorm 和 LayerNorm 的区别，分别的适用场景"></a><strong>3. BatchNorm 和 LayerNorm 的区别，分别的适用场景</strong></h2>
+      <blockquote>
+<p>BN 在 batch 维度上做归一化，依赖 batch size;</p>
+<p>LN 在特征维度上做归一化，与 batch size 无关。</p>
+</blockquote>
+<p>设输入张量为：</p>
+<ul>
+<li>CNN 常见：(b,c, h,w)</li>
+<li>NLP &#x2F; Transformer 常见：(b, seq, d)</li>
+</ul>
+
+        <h3 id="BN">
+          <a href="#BN" class="heading-link"><i class="fas fa-link"></i></a><a href="#BN" class="headerlink" title="BN"></a>BN</h3>
+      <p><strong>BN 的可训练参数为 2c；</strong></p>
+<p>BN 的特点：</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>加速收敛；</li>
+<li>缓解梯度消失 &#x2F; 爆炸</li>
+<li>有正则化效果（类似 Dropout）</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>强依赖 batch size;</li>
+<li>小 batch &#x2F; batch size &#x3D; 1 时效果很差；</li>
+<li>训练和推理行为不一致（running mean &#x2F; var）</li>
+</ul>
+<p><strong>BN 典型使用场景</strong></p>
+<ul>
+<li>CNN &#x2F;  视觉任务<ul>
+<li>图像分类；</li>
+<li>目标检测（batch 够大）</li>
+<li>语义分割（大 batch）</li>
+</ul>
+</li>
+<li>不太适合<ul>
+<li>RNN</li>
+<li>Transformer</li>
+<li>在线学习 &#x2F; 小 batch &#x2F; 单样本推理</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="LN">
+          <a href="#LN" class="heading-link"><i class="fas fa-link"></i></a><a href="#LN" class="headerlink" title="LN"></a>LN</h3>
+      <p><strong>LN 的可训练参数为 2d，d 为特征维度。</strong></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>与 batch size 无关；</li>
+<li>训练和推理完全一致；</li>
+<li>非常稳定；</li>
+<li>适合序列建模；</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>在 CNN 中效果通常不如 BN；</li>
+<li>不利用 batch 统计信息；</li>
+</ul>
+<p><strong>BN 典型使用场景</strong></p>
+<ul>
+<li>NLP &#x2F; Transformer<ul>
+<li>BERT；</li>
+<li>GPT；</li>
+<li>ViT（Transformer 部分）</li>
+</ul>
+</li>
+<li>不太适合<ul>
+<li>小 batch;</li>
+<li>变长序列；</li>
+<li>自回归模型；</li>
+</ul>
+</li>
+</ul>
+
+        <h2 id="4-交叉熵公式">
+          <a href="#4-交叉熵公式" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-交叉熵公式" class="headerlink" title="4.交叉熵公式"></a><strong>4.交叉熵公式</strong></h2>
+      <blockquote>
+<p><strong>交叉熵本质是负对数似然，二分类用 BCE，多分类用 Softmax + CE；最小化交叉熵等价于最小化 KL 散度。</strong></p>
+<p>KL 散度是衡量两个概率分布差异的非对称量，训练模型最小化交叉熵，本质上是在最小化 KL 散度。</p>
+</blockquote>
+<p>对于真实分布 P 和 预测分布 Q，交叉熵定义为：</p>
+<img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260104222812593.png" class title="image-20260104222812593">
+
+<p>含义：</p>
+<ul>
+<li>用真实分布 P 来衡量</li>
+<li>使用编码方案 Q 时的期望信息量</li>
+<li><strong>Q 越接近 P，交叉熵越小</strong></li>
+</ul>
+
+        <h3 id="分类任务中的交叉熵">
+          <a href="#分类任务中的交叉熵" class="heading-link"><i class="fas fa-link"></i></a><a href="#分类任务中的交叉熵" class="headerlink" title="分类任务中的交叉熵"></a>分类任务中的交叉熵</h3>
+      
+        <h4 id="二分类交叉熵（BCE）">
+          <a href="#二分类交叉熵（BCE）" class="heading-link"><i class="fas fa-link"></i></a><a href="#二分类交叉熵（BCE）" class="headerlink" title="二分类交叉熵（BCE）"></a>二分类交叉熵（BCE）</h4>
+      <img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260104223220451.png" class title="image-20260104223220451">
+
+
+
+
+        <h4 id="多分类交叉熵（CE）">
+          <a href="#多分类交叉熵（CE）" class="heading-link"><i class="fas fa-link"></i></a><a href="#多分类交叉熵（CE）" class="headerlink" title="多分类交叉熵（CE）"></a>多分类交叉熵（CE）</h4>
+      <img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260104223249129.png" class title="image-20260104223249129">
+
+
+        <h4 id="Softmax-Cross-Entropy">
+          <a href="#Softmax-Cross-Entropy" class="heading-link"><i class="fas fa-link"></i></a><a href="#Softmax-Cross-Entropy" class="headerlink" title="Softmax + Cross Entropy"></a>Softmax + Cross Entropy</h4>
+      <img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260104223421008.png" class title="image-20260104223421008">
+
+
+
+
+
+
+        <h2 id="5-对比学习">
+          <a href="#5-对比学习" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-对比学习" class="headerlink" title="5.对比学习"></a><strong>5.对比学习</strong></h2>
+      <blockquote>
+<p><strong>对比学习的目标是：把相似的样本表示拉近，把不相似的样本表示推远。</strong></p>
+<p>它不依赖人工标签，而是通过构造正样本对 &#x2F; 负样本对 来学习判别性的表示。</p>
+</blockquote>
+<ul>
+<li><strong>正样本对：</strong> 语义相同的两个视角，比如同一张图片的两种数据增强；</li>
+<li><strong>负样本对：</strong> 语义不同，比如不同照片。</li>
+</ul>
+<p>学习到的 embedding 空间应满足：</p>
+<ul>
+<li>正对：距离小，相似度高；</li>
+<li>负对：距离大，相似度低；</li>
+</ul>
+
+        <h2 id="6-InfoNCE，温度系数的作用">
+          <a href="#6-InfoNCE，温度系数的作用" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-InfoNCE，温度系数的作用" class="headerlink" title="6.InfoNCE，温度系数的作用"></a><strong>6.InfoNCE，温度系数的作用</strong></h2>
+      <blockquote>
+<p><strong>InfoNCE 把找到正样本建模成一个 softmax 分类问题，通过拉高正样本相似度，压低负样本相似度来学习表示。</strong></p>
+</blockquote>
+<p>温度系数控制相似度分布的尖锐程度，决定了对比的强弱与训练稳定性。</p>
+
+        <h2 id="7-SoftMax">
+          <a href="#7-SoftMax" class="heading-link"><i class="fas fa-link"></i></a><a href="#7-SoftMax" class="headerlink" title="7.SoftMax"></a><strong>7.SoftMax</strong></h2>
+      <p><strong>SoftMax 将任意实数向量映射为概率分布，实现多分类建模：</strong></p>
+<img src="/2025/12/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/image-20260104225252298.png" class title="image-20260104225252298">
+
+
+
+
+        <h2 id="8-adam优化器">
+          <a href="#8-adam优化器" class="heading-link"><i class="fas fa-link"></i></a><a href="#8-adam优化器" class="headerlink" title="8.adam优化器"></a><strong>8.adam优化器</strong></h2>
+      <p>Adam &#x3D; <strong>Momentum + RMSProp 的结合</strong>，<strong>Adam 通过一阶和二阶矩的自适应估计，为每个参数动态调整学习率，兼具快速收敛和训练稳定性，是深度学习中最常用的优化器之一。</strong></p>
+<p>它希望同时解决：</p>
+<ul>
+<li><strong>SGD 收敛慢、震荡大</strong></li>
+<li><strong>不同参数梯度尺度差异大</strong></li>
+<li><strong>学习率难以手动调节</strong></li>
+</ul>
+<p>核心思想：<strong>对每个参数自适应调整学习率，同时利用梯度的一阶和二阶矩信息。</strong></p>
+<ul>
+<li><strong>一阶矩：</strong> 梯度的指数加权平均；</li>
+<li><strong>二阶矩：</strong> 梯度平方的指数加权平均；</li>
+</ul>
+
+        <h2 id="9-Kimi-K2-模型使用的-Muon优化器">
+          <a href="#9-Kimi-K2-模型使用的-Muon优化器" class="heading-link"><i class="fas fa-link"></i></a><a href="#9-Kimi-K2-模型使用的-Muon优化器" class="headerlink" title="9. Kimi K2 模型使用的 Muon优化器"></a><strong>9. Kimi K2 模型使用的 Muon优化器</strong></h2>
+      <p><strong>Muon 是一种方向归一化的动量优化器，它在参数更新时，显示消除梯度的尺度信息，只保留方向信息。</strong></p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Adam &#x2F; AdamW</th>
+<th>Muon</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否使用梯度幅值</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>是否自适应学习率</td>
+<td>✅（逐参数）</td>
+<td>❌（全局）</td>
+</tr>
+<tr>
+<td>关注重点</td>
+<td>scale + direction</td>
+<td><strong>direction only</strong></td>
+</tr>
+<tr>
+<td>对初始化敏感</td>
+<td>较敏感</td>
+<td><strong>不敏感</strong></td>
+</tr>
+<tr>
+<td>大模型稳定性</td>
+<td>一般</td>
+<td><strong>很强</strong></td>
+</tr>
+<tr>
+<td>调参难度</td>
+<td>中</td>
+<td><strong>低</strong></td>
+</tr>
+</tbody></table></div>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2025/12/06/%E5%9F%BA%E6%9C%AC%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/">基本机器学习理论</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2025-12-06</span></span></div></header><div class="post-body"><div class="post-excerpt"></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2025/12/06/pytorch%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">pytorch的基本操作</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2025-12-06</span></span></div></header><div class="post-body"><div class="post-excerpt">
         <h1 id="Pytorch">
           <a href="#Pytorch" class="heading-link"><i class="fas fa-link"></i></a><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h1>
       
@@ -1163,7 +1469,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <td align="center">192.168.157.23</td>
 </tr>
 </tbody></table></div>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/2.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">今天要比昨天进步一点点</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/IAMLLT796" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="lt.liu796@gmail.com" target="_blank" rel="noopener" data-popover="Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/274733853?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-popover="bilibili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Bili</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/kui-hua-cheng-hai-xiang-yang-er-kai-76" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">66</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">72</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>冀ICP备19023374</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 大力支持</span><span> v6.3.0</span><span class="footer__devider">|</span><span>Tema - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitantes</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Vistas</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>葵海-做一个有趣的人</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/2.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">今天要比昨天进步一点点</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/IAMLLT796" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="lt.liu796@gmail.com" target="_blank" rel="noopener" data-popover="Gmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">邮</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/274733853?spm_id_from=333.1007.0.0" target="_blank" rel="noopener" data-popover="bilibili" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">Bili</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/kui-hua-cheng-hai-xiang-yang-er-kai-76" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">66</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">73</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>冀ICP备19023374</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 大力支持</span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div><div>葵海-做一个有趣的人</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
   var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-banner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
   // 加载进度条的计时器
   var loadingTimer = null;
